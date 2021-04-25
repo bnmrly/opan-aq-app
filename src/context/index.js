@@ -5,8 +5,8 @@ const CountryContext = React.createContext();
 const CountryProvider = (props) => {
   const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState([]);
-
-  const url = `https://api.openaq.org/v1/countries`;
+  const [pageNumber, setPageNumber] = useState(1);
+  const url = `https://api.openaq.org/v2/countries?limit=50&page=${pageNumber}`;
 
   const fetchCountries = () => {
     fetch(url)
@@ -14,6 +14,7 @@ const CountryProvider = (props) => {
       .then((countryData) => {
         console.dir(countryData.results);
         setCountries(countryData.results);
+        setLoading(!loading);
       })
       .catch((error) => console.log(error.message));
   };
@@ -21,7 +22,7 @@ const CountryProvider = (props) => {
   useEffect(() => {
     fetchCountries();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pageNumber]);
 
   return (
     <CountryContext.Provider
@@ -30,6 +31,9 @@ const CountryProvider = (props) => {
         setLoading,
         countries,
         setCountries,
+        fetchCountries,
+        pageNumber,
+        setPageNumber,
       }}
     >
       {props.children}
