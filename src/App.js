@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+import { CountryContext } from "./context";
 import styled from "styled-components";
 
 // Components
@@ -43,6 +45,9 @@ const App = () => {
     margin: 20px;
   `;
 
+  const appContext = useContext(CountryContext);
+  const { loading } = appContext;
+
   return (
     <div className="App">
       <AppContainer>
@@ -51,7 +56,7 @@ const App = () => {
           <AppTitle>List of Countries</AppTitle>
         </AppHeader>
         <CountryList />
-        <Pagination />
+        {!loading && <Pagination />}
       </AppContainer>
     </div>
   );

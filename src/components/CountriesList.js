@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { CountryContext } from "../context/index";
+import { CountryContext } from "../context";
 import styled from "styled-components";
 
 // Styled Components
@@ -27,7 +27,6 @@ const CountryCardNameLocations = styled.h3`
 const CountryList = () => {
   const appContext = useContext(CountryContext);
   const { loading, countries } = appContext;
-  console.log("this is countries", countries);
 
   return (
     <Fragment>

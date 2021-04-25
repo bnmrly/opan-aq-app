@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { CountryContext } from "../context/index";
+import { CountryContext } from "../context";
 import styled from "styled-components";
 
 // Styled Components
