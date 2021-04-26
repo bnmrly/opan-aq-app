@@ -3,7 +3,7 @@ import { CountryContext } from "./context";
 import styled from "styled-components";
 
 // Components
-import CountryList from "./components/CountriesList";
+import CountriesList from "./components/CountriesList";
 import Pagination from "./components/Pagination";
 
 // Styled Components
@@ -55,7 +55,7 @@ const App = () => {
           <AppLogo src="https://images.victorianplumbing.co.uk/vp2019/images/victorian-plumbing-logo.png" />
           <AppTitle>List of Countries</AppTitle>
         </AppHeader>
-        <CountryList />
+        <CountriesList />
         {!loading && <Pagination />}
       </AppContainer>
     </div>

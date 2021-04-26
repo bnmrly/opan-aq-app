@@ -2,8 +2,12 @@ import React, { Fragment, useContext } from "react";
 import { CountryContext } from "../context";
 import styled from "styled-components";
 
+// Components
+
+import SkeletonCountryCard from "./SkeletonCountryCard";
+
 // Styled Components
-const CountryCardContainer = styled.div`
+const CountriesCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   row-gap: 30px;
@@ -30,8 +34,9 @@ const CountryList = () => {
 
   return (
     <Fragment>
-      {loading && <h1>loading...</h1>}
-      <CountryCardContainer>
+      <CountriesCardContainer>
+        {loading &&
+          [...Array(50)].map((_el, i) => <SkeletonCountryCard key={i} />)}
         {countries.length > 0 &&
           countries.map((country) => (
             <CountryCard key={country.code}>
@@ -41,7 +46,7 @@ const CountryList = () => {
               </CountryCardNameLocations>
             </CountryCard>
           ))}
-      </CountryCardContainer>
+      </CountriesCardContainer>
     </Fragment>
   );
 };
